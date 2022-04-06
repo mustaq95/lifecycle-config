@@ -5,7 +5,7 @@ sudo -u ec2-user -i <<'EOP'
 #####################################
 ## INSTALL THEIA IDE FROM SOURCE
 #####################################
-CONFIG_DIR=${HOME}/lifecycle-config/config
+CONFIG_DIR=${HOME}/SageMaker/amazon-sagemaker-notebook-instance-lifecycle-config-theia/config
 EC2_HOME=/home/ec2-user
 mkdir ${EC2_HOME}/theia && cd ${EC2_HOME}/theia
 
@@ -44,6 +44,8 @@ c.ServerProxy.servers = {
 EOC
 
 source /home/ec2-user/anaconda3/bin/activate JupyterSystemEnv
+pip install nbcovert==5.6.1
+pip install jedi==0.18.1
 pip install jupyter-server-proxy pylint autopep8 yapf pyflakes pycodestyle 'python-language-server[all]'
 jupyter labextension install @jupyterlab/server-proxy
 conda deactivate
